@@ -21,7 +21,7 @@ const eventSchema = z.object({
   description: z.string().optional(),
   ticket_url: z.string().url('Valid ticket URL required').optional().or(z.literal('')),
   image_url: z.string().url('Valid image URL required').optional().or(z.literal('')),
-  is_past: z.boolean().default(false),
+  is_past: z.boolean(),
 });
 
 type EventFormValues = z.infer<typeof eventSchema>;
@@ -132,7 +132,7 @@ export default function AdminEvents() {
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
+                <FormField<EventFormValues>
                   control={form.control}
                   name="title"
                   render={({ field }) => (
@@ -146,7 +146,7 @@ export default function AdminEvents() {
                   )}
                 />
                 <div className="grid grid-cols-2 gap-4">
-                  <FormField
+                  <FormField<EventFormValues>
                     control={form.control}
                     name="date"
                     render={({ field }) => (
@@ -159,7 +159,7 @@ export default function AdminEvents() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  <FormField<EventFormValues>
                     control={form.control}
                     name="location"
                     render={({ field }) => (
@@ -173,7 +173,7 @@ export default function AdminEvents() {
                     )}
                   />
                 </div>
-                <FormField
+                <FormField<EventFormValues>
                   control={form.control}
                   name="description"
                   render={({ field }) => (
@@ -186,7 +186,7 @@ export default function AdminEvents() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<EventFormValues>
                   control={form.control}
                   name="ticket_url"
                   render={({ field }) => (
@@ -199,7 +199,7 @@ export default function AdminEvents() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<EventFormValues>
                   control={form.control}
                   name="image_url"
                   render={({ field }) => (
@@ -212,7 +212,7 @@ export default function AdminEvents() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<EventFormValues>
                   control={form.control}
                   name="is_past"
                   render={({ field }) => (

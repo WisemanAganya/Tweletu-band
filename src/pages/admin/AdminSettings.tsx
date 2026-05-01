@@ -133,7 +133,7 @@ export default function AdminSettings() {
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6 space-y-4">
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="site_title"
                 render={({ field }) => (
@@ -146,7 +146,7 @@ export default function AdminSettings() {
                   </FormItem>
                 )}
               />
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="site_description"
                 render={({ field }) => (
@@ -173,7 +173,7 @@ export default function AdminSettings() {
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="contact_email"
                 render={({ field }) => (
@@ -188,7 +188,7 @@ export default function AdminSettings() {
                   </FormItem>
                 )}
               />
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="contact_phone"
                 render={({ field }) => (
@@ -203,7 +203,7 @@ export default function AdminSettings() {
                   </FormItem>
                 )}
               />
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="contact_address"
                 render={({ field }) => (
@@ -232,7 +232,7 @@ export default function AdminSettings() {
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="instagram_url"
                 render={({ field }) => (
@@ -245,7 +245,7 @@ export default function AdminSettings() {
                   </FormItem>
                 )}
               />
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="youtube_url"
                 render={({ field }) => (
@@ -258,7 +258,7 @@ export default function AdminSettings() {
                   </FormItem>
                 )}
               />
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="spotify_url"
                 render={({ field }) => (
@@ -271,7 +271,7 @@ export default function AdminSettings() {
                   </FormItem>
                 )}
               />
-              <FormField
+              <FormField<SettingsFormValues>
                 control={form.control}
                 name="tiktok_url"
                 render={({ field }) => (

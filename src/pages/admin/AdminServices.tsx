@@ -18,7 +18,7 @@ const serviceSchema = z.object({
   description: z.string().min(10, 'Description is required'),
   icon: z.string().optional(),
   price: z.number().nullable().optional(),
-  order: z.number().default(0),
+  order: z.number(),
 });
 
 type ServiceFormValues = z.infer<typeof serviceSchema>;
@@ -124,7 +124,7 @@ export default function AdminServices() {
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
+                <FormField<ServiceFormValues>
                   control={form.control}
                   name="title"
                   render={({ field }) => (
@@ -137,7 +137,7 @@ export default function AdminServices() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<ServiceFormValues>
                   control={form.control}
                   name="description"
                   render={({ field }) => (
@@ -151,7 +151,7 @@ export default function AdminServices() {
                   )}
                 />
                 <div className="grid grid-cols-3 gap-4">
-                  <FormField
+                  <FormField<ServiceFormValues>
                     control={form.control}
                     name="icon"
                     render={({ field }) => (
@@ -164,7 +164,7 @@ export default function AdminServices() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  <FormField<ServiceFormValues>
                     control={form.control}
                     name="price"
                     render={({ field }) => (
@@ -183,7 +183,7 @@ export default function AdminServices() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  <FormField<ServiceFormValues>
                     control={form.control}
                     name="order"
                     render={({ field }) => (

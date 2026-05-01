@@ -19,7 +19,7 @@ const videoSchema = z.object({
   video_url: z.string().url('Valid video URL required'),
   thumbnail_url: z.string().optional(),
   description: z.string().optional(),
-  order: z.number().default(0),
+  order: z.number(),
 });
 
 type VideoFormValues = z.infer<typeof videoSchema>;
@@ -127,7 +127,7 @@ export default function AdminVideos() {
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
+                <FormField<VideoFormValues>
                   control={form.control}
                   name="title"
                   render={({ field }) => (
@@ -140,7 +140,7 @@ export default function AdminVideos() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<VideoFormValues>
                   control={form.control}
                   name="category"
                   render={({ field }) => (
@@ -153,7 +153,7 @@ export default function AdminVideos() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<VideoFormValues>
                   control={form.control}
                   name="video_url"
                   render={({ field }) => (
@@ -166,7 +166,7 @@ export default function AdminVideos() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<VideoFormValues>
                   control={form.control}
                   name="thumbnail_url"
                   render={({ field }) => (
@@ -179,7 +179,7 @@ export default function AdminVideos() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<VideoFormValues>
                   control={form.control}
                   name="description"
                   render={({ field }) => (
@@ -192,7 +192,7 @@ export default function AdminVideos() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<VideoFormValues>
                   control={form.control}
                   name="order"
                   render={({ field }) => (

@@ -28,7 +28,10 @@ export function TestimonialForm() {
     setIsSubmitting(true);
     try {
       await testimonialService.create({
-        ...values,
+        client_name: values.clientName,
+        client_role: values.clientRole,
+        content: values.content,
+        rating: values.rating,
         status: 'pending' // Admin can approve later
       });
       toast.success('Thank you! Your testimonial has been submitted for review.');

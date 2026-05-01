@@ -17,6 +17,7 @@ import { TestimonialForm } from '../components/TestimonialForm';
 const formSchema = z.object({
   clientName: z.string().min(2, 'Name must be at least 2 characters'),
   clientEmail: z.string().email('Invalid email address'),
+  phone: z.string().min(10, 'Phone number must be at least 10 digits'),
   eventType: z.string().min(1, 'Please select an event type'),
   eventDate: z.string().min(1, 'Please select a date'),
   location: z.string().min(2, 'Location is required'),
@@ -33,6 +34,7 @@ export default function Contact() {
     defaultValues: {
       clientName: '',
       clientEmail: '',
+      phone: '',
       eventType: '',
       eventDate: '',
       location: '',
@@ -45,8 +47,13 @@ export default function Contact() {
     setIsSubmitting(true);
     try {
       await bookingService.create({
-        ...values,
-        status: 'pending',
+        name: values.clientName,
+        email: values.clientEmail,
+        phone: values.phone,
+        event_date: values.eventDate,
+        location: values.location,
+        budget: values.budgetRange,
+        message: values.message,
       });
       setIsSubmitted(true);
       toast.success('Booking request sent successfully!');
@@ -181,6 +188,19 @@ export default function Contact() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs uppercase tracking-widest text-zinc-400">Phone Number</FormLabel>
+                        <FormControl>
+                          <Input placeholder="+254 ..." {...field} className="glass border-white/10 focus:border-teal-400 focus:ring-teal-400/20 text-white placeholder:text-zinc-500 h-12 rounded-xl transition-all" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <FormField
                     control={form.control}
                     name="eventType"

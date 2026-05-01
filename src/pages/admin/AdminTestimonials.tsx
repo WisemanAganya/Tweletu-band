@@ -147,7 +147,7 @@ export default function AdminTestimonials() {
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <FormField
+                  <FormField<TestimonialFormValues>
                     control={form.control}
                     name="client_name"
                     render={({ field }) => (
@@ -160,7 +160,7 @@ export default function AdminTestimonials() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  <FormField<TestimonialFormValues>
                     control={form.control}
                     name="client_role"
                     render={({ field }) => (
@@ -174,7 +174,7 @@ export default function AdminTestimonials() {
                     )}
                   />
                 </div>
-                <FormField
+                <FormField<TestimonialFormValues>
                   control={form.control}
                   name="content"
                   render={({ field }) => (
@@ -188,7 +188,7 @@ export default function AdminTestimonials() {
                   )}
                 />
                 <div className="grid grid-cols-2 gap-4">
-                  <FormField
+                  <FormField<TestimonialFormValues>
                     control={form.control}
                     name="rating"
                     render={({ field }) => (
@@ -201,7 +201,7 @@ export default function AdminTestimonials() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  <FormField<TestimonialFormValues>
                     control={form.control}
                     name="status"
                     render={({ field }) => (
@@ -224,7 +224,7 @@ export default function AdminTestimonials() {
                     )}
                   />
                 </div>
-                <FormField
+                <FormField<TestimonialFormValues>
                   control={form.control}
                   name="image_url"
                   render={({ field }) => (

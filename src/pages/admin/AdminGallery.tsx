@@ -18,7 +18,7 @@ const gallerySchema = z.object({
   category: z.string().min(1, 'Category is required'),
   image_url: z.string().url('Valid image URL required'),
   description: z.string().optional(),
-  order: z.number().default(0),
+  order: z.number(),
 });
 
 type GalleryFormValues = z.infer<typeof gallerySchema>;
@@ -124,7 +124,7 @@ export default function AdminGallery() {
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
+                <FormField<GalleryFormValues>
                   control={form.control}
                   name="title"
                   render={({ field }) => (
@@ -137,7 +137,7 @@ export default function AdminGallery() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<GalleryFormValues>
                   control={form.control}
                   name="category"
                   render={({ field }) => (
@@ -150,7 +150,7 @@ export default function AdminGallery() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<GalleryFormValues>
                   control={form.control}
                   name="image_url"
                   render={({ field }) => (
@@ -163,7 +163,7 @@ export default function AdminGallery() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<GalleryFormValues>
                   control={form.control}
                   name="description"
                   render={({ field }) => (
@@ -176,7 +176,7 @@ export default function AdminGallery() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<GalleryFormValues>
                   control={form.control}
                   name="order"
                   render={({ field }) => (

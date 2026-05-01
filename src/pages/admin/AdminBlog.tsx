@@ -150,7 +150,7 @@ export default function AdminBlog() {
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <FormField
+                  <FormField<BlogFormValues>
                     control={form.control}
                     name="title"
                     render={({ field }) => (
@@ -163,7 +163,7 @@ export default function AdminBlog() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  <FormField<BlogFormValues>
                     control={form.control}
                     name="slug"
                     render={({ field }) => (
@@ -177,7 +177,7 @@ export default function AdminBlog() {
                     )}
                   />
                 </div>
-                <FormField
+                <FormField<BlogFormValues>
                   control={form.control}
                   name="excerpt"
                   render={({ field }) => (
@@ -190,7 +190,7 @@ export default function AdminBlog() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<BlogFormValues>
                   control={form.control}
                   name="content"
                   render={({ field }) => (
@@ -204,7 +204,7 @@ export default function AdminBlog() {
                   )}
                 />
                 <div className="grid grid-cols-2 gap-4">
-                  <FormField
+                  <FormField<BlogFormValues>
                     control={form.control}
                     name="featured_image"
                     render={({ field }) => (
@@ -217,7 +217,7 @@ export default function AdminBlog() {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  <FormField<BlogFormValues>
                     control={form.control}
                     name="status"
                     render={({ field }) => (

@@ -19,7 +19,7 @@ const musicSchema = z.object({
   audio_url: z.string().url('Valid audio URL required'),
   description: z.string().optional(),
   cover_url: z.string().optional(),
-  order: z.number().default(0),
+  order: z.number(),
 });
 
 type MusicFormValues = z.infer<typeof musicSchema>;
@@ -127,7 +127,7 @@ export default function AdminMusic() {
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
+                <FormField<MusicFormValues>
                   control={form.control}
                   name="title"
                   render={({ field }) => (
@@ -140,7 +140,7 @@ export default function AdminMusic() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<MusicFormValues>
                   control={form.control}
                   name="category"
                   render={({ field }) => (
@@ -153,7 +153,7 @@ export default function AdminMusic() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<MusicFormValues>
                   control={form.control}
                   name="audio_url"
                   render={({ field }) => (
@@ -166,7 +166,7 @@ export default function AdminMusic() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<MusicFormValues>
                   control={form.control}
                   name="description"
                   render={({ field }) => (
@@ -179,7 +179,7 @@ export default function AdminMusic() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<MusicFormValues>
                   control={form.control}
                   name="cover_url"
                   render={({ field }) => (
@@ -192,7 +192,7 @@ export default function AdminMusic() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <FormField<MusicFormValues>
                   control={form.control}
                   name="order"
                   render={({ field }) => (

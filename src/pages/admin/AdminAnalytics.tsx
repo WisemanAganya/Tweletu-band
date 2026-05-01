@@ -54,7 +54,7 @@ export default function AdminAnalytics() {
         publishedBlogPosts: blogPosts.filter(p => p.status === 'published').length,
         approvedTestimonials: testimonials.filter(t => t.status === 'approved').length,
         upcomingEvents: events.filter(e => !e.is_past && new Date(e.date) > now).length,
-        pendingBookings: bookings.filter(b => b.status === 'pending').length,
+        pendingBookings: bookings.filter(b => b.status === 'new').length,
       });
     } catch (error) {
       console.error('Failed to fetch analytics:', error);
